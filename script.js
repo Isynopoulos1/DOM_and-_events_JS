@@ -36,20 +36,11 @@ document.querySelector('.check').addEventListener('click', function () {
       document.querySelector('.highscore').textContent = highscore;
     }
 
-    //when guess is too high
-  } else if (guess > secretNumber) {
+    //when guess is wrong
+  } else if (guess !== secretNumber) {
     if (score > 1) {
-      document.querySelector('.message').textContent = 'TOO HIGH!';
-      score--;
-      document.querySelector('.score').textContent = score;
-    } else {
-      document.querySelector('.message').textContent = 'YOU LOST THE GAME';
-      document.querySelector('.score').textContent = 0;
-    }
-    //when guess is too low
-  } else if (guess < secretNumber) {
-    if (score > 1) {
-      document.querySelector('.message').textContent = 'TOO LOW!';
+      document.querySelector('.message').textContent =
+        guess > secretNumber ? 'TOO HIGH!' : 'TOO LOW!';
       score--;
       document.querySelector('.score').textContent = score;
     } else {
@@ -57,6 +48,29 @@ document.querySelector('.check').addEventListener('click', function () {
       document.querySelector('.score').textContent = 0;
     }
   }
+
+  // ///////// BEFORE REFACTORIZING
+  //   //when guess is too high
+  // } else if (guess > secretNumber) {
+  //   if (score > 1) {
+  //     document.querySelector('.message').textContent = 'TOO HIGH!';
+  //     score--;
+  //     document.querySelector('.score').textContent = score;
+  //   } else {
+  //     document.querySelector('.message').textContent = 'YOU LOST THE GAME';
+  //     document.querySelector('.score').textContent = 0;
+  //   }
+  //   //when guess is too low
+  // } else if (guess < secretNumber) {
+  //   if (score > 1) {
+  //     document.querySelector('.message').textContent = 'TOO LOW!';
+  //     score--;
+  //     document.querySelector('.score').textContent = score;
+  //   } else {
+  //     document.querySelector('.message').textContent = 'YOU LOST THE GAME';
+  //     document.querySelector('.score').textContent = 0;
+  //   }
+  // }
 });
 
 ///////////////////////////////////////
